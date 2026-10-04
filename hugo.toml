@@ -25,9 +25,15 @@ disableKinds = ["taxonomy", "term", "RSS"]
   # (Delete content/contact.md too if you want that page gone for good.)
   contactURL = ""
 
+  # Public Google Group people join to get talk announcements. Leave "" to hide
+  # the "Join the mailing list" button.
+  mailingListURL = "https://groups.google.com/g/mila-world-models-rg"
+
   # Where the contact form posts: a FormSubmit endpoint that forwards messages to
-  # the organizers' Google Group. The random string hides the group address.
-  formEndpoint = "https://formsubmit.co/7ce1947f8662034d27f53e6f3af90463"
+  # the private organizers' group (world-models-rg@mila.quebec, which must accept
+  # posts from outside senders). The random string hides the address. Not the
+  # public mailing list above: anything sent there goes to every subscriber.
+  formEndpoint = "https://formsubmit.co/0b1cb7dbcd9dd36c310ba575c0306c1a"
 
 
 [markup]

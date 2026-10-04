@@ -114,8 +114,16 @@
 
   <section id="contact">
     <h2>Get in touch</h2>
+    {{ with site.Params.mailingListURL }}
+    <p class="contact__lede">Join the mailing list to get an email about each upcoming talk. To propose a paper or sign up to present, get in touch.</p>
+    <p class="contact__actions">
+      <a class="button" href="{{ . }}">Join the mailing list</a>
+      <a class="button button--secondary" href="{{ partial "contact-url.html" $ }}">Get in touch</a>
+    </p>
+    {{ else }}
     <p class="contact__lede">To join the mailing list, propose a paper, or sign up to present.</p>
     <p><a class="button" href="{{ partial "contact-url.html" . }}">Get in touch</a></p>
+    {{ end }}
   </section>
 
 {{ end }}

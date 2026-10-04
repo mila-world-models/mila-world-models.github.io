@@ -237,6 +237,8 @@ h2 {
   border-radius: 8px;
 }
 .button:hover { text-decoration: none; filter: brightness(1.08); }
+.button--secondary { color: var(--link); background: transparent; }
+.contact__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
 
 /* ----------  Contact page  ---------- */
 .prose h1 { margin-bottom: 0.75rem; }
