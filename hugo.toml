@@ -28,6 +28,13 @@ disableKinds = ["taxonomy", "term", "RSS"]
   # Public Google Group people join to get talk announcements. Leave "" to hide
   # the "Join the mailing list" button.
   mailingListURL = "https://groups.google.com/g/mila-world-models-rg"
+  # Same group, for people without a Google account: emailing the +subscribe
+  # address joins them. Leave "" to hide the email option.
+  mailingListSubscribe = "mila-world-models-rg+subscribe@googlegroups.com"
+  # Slack channel for people at Mila. slackURL is optional: paste the channel
+  # link (right-click the channel in Slack → Copy link) to make it clickable.
+  slackChannel = "#world-models"
+  slackURL = "https://mila-umontreal.slack.com/archives/C0AF2KA3SQY"
 
   # Where the contact form posts: a FormSubmit endpoint that forwards messages to
   # the private organizers' group (world-models-rg@mila.quebec, which must accept

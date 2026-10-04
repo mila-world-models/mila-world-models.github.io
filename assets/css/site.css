@@ -81,6 +81,20 @@ h2 {
 }
 .facts dt { color: var(--muted); }
 .facts dd { margin: 0; }
+.updates__line { display: block; }
+.facts .muted { color: var(--muted); }
+.subscribe-hint {
+  display: block;
+  margin: 0.4rem 0 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border-left: 3px solid var(--link);
+  background: var(--thumb-bg);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.subscribe-hint[hidden] { display: none; }
 
 
 @media (max-width: 620px) {
@@ -239,6 +253,7 @@ h2 {
 .button:hover { text-decoration: none; filter: brightness(1.08); }
 .button--secondary { color: var(--link); background: transparent; }
 .contact__actions { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.contact__note { margin: 0.9rem 0 0; color: var(--muted); font-size: 0.88rem; overflow-wrap: anywhere; }
 
 /* ----------  Contact page  ---------- */
 .prose h1 { margin-bottom: 0.75rem; }

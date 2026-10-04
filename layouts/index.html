@@ -3,10 +3,37 @@
   <section class="intro bio">
     {{ .Content }}
 
-    {{ if or site.Params.when site.Params.where }}
+    {{ if or site.Params.when site.Params.where site.Params.mailingListURL site.Params.slackChannel }}
     <dl class="facts">
       {{ with site.Params.when }}<dt>When</dt><dd>{{ . }}</dd>{{ end }}
       {{ with site.Params.where }}<dt>Where</dt><dd>{{ . | safeHTML }}</dd>{{ end }}
+      {{ if or site.Params.mailingListURL site.Params.slackChannel }}
+      <dt>Updates</dt>
+      <dd>
+        {{ with site.Params.mailingListURL }}
+        <span class="updates__line">
+          <a href="{{ . }}">Join the mailing list</a>
+          {{ with site.Params.mailingListSubscribe }}or <a href="mailto:{{ . }}?subject=Subscribe" data-subscribe-hint="subscribe-hint">subscribe by email</a>
+          <span class="muted">(no Google account needed)</span>{{ end }}
+        </span>
+        {{ with site.Params.mailingListSubscribe }}
+        <span class="subscribe-hint" id="subscribe-hint" role="status" hidden>
+          Your email app should open. Send the email, then <strong>reply</strong> to the
+          confirmation you receive to finish joining. (The "Join" button in that email needs a
+          Google account; replying doesn't.) If nothing opened, email
+          <a href="mailto:{{ . }}?subject=Subscribe">{{ . }}</a>.
+        </span>
+        {{ end }}
+        {{ end }}
+        {{ with site.Params.slackChannel }}
+        <span class="updates__line">
+          At Mila? Follow
+          {{ with site.Params.slackURL }}<a href="{{ . }}">{{ site.Params.slackChannel }}</a>{{ else }}<strong>{{ . }}</strong>{{ end }}
+          on Slack
+        </span>
+        {{ end }}
+      </dd>
+      {{ end }}
     </dl>
     {{ end }}
   </section>
@@ -112,6 +139,15 @@
   </section>
   {{ end }}
 
+  <script>
+    document.querySelectorAll("[data-subscribe-hint]").forEach(function (a) {
+      a.addEventListener("click", function () {
+        var hint = document.getElementById(a.dataset.subscribeHint);
+        if (hint) hint.hidden = false;
+      });
+    });
+  </script>
+
   <section id="contact">
     <h2>Get in touch</h2>
     {{ with site.Params.mailingListURL }}
@@ -120,6 +156,11 @@
       <a class="button" href="{{ . }}">Join the mailing list</a>
       <a class="button button--secondary" href="{{ partial "contact-url.html" $ }}">Get in touch</a>
     </p>
+    {{ with site.Params.mailingListSubscribe }}
+    <p class="contact__note">No Google account? Send any email to
+      <a href="mailto:{{ . }}?subject=Subscribe">{{ . }}</a>, then reply to the confirmation
+      email you receive (its "Join" button needs a Google account; replying doesn't).</p>
+    {{ end }}
     {{ else }}
     <p class="contact__lede">To join the mailing list, propose a paper, or sign up to present.</p>
     <p><a class="button" href="{{ partial "contact-url.html" . }}">Get in touch</a></p>
