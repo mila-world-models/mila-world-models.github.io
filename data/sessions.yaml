@@ -5,6 +5,7 @@
 #
 # - date: "Oct 3, 2026"
 #   presenter: "Name Surname"
+#   presenterURL: "https://..."  # optional: links the presenter's name
 #   paper: "Title of the paper"
 #   note: "Optional one-line comment, e.g. a theme or a second paper."
 #   abstract: "Optional talk abstract."
@@ -14,19 +15,31 @@
 #   links:
 #     paper: "https://arxiv.org/abs/..."
 #     video: "https://youtu.be/..."     # optional recording
+#     videoAccess: "Mila login required"  # optional note shown after "Recording"
 #     slides: "https://..."             # optional
 #     code: "https://github.com/..."    # optional
 
+- date: "Thursday, October 29, 2026 · 3:00 pm ET"
+  presenter: "David Klindt"
+  presenterURL: "https://facultyprofiles.cshl.edu/david.klindt"
+  paper: "Title TBD"
+  status: "Upcoming"
+
 - date: "Thursday, October 15, 2026 · 3:00 pm ET"
-  presenter: "TBD"
-  paper: "TBD"
+  presenter: "Nicklas Hansen"
+  presenterURL: "https://www.nicklashansen.com/"
+  paper: "Title TBD"
   status: "Upcoming"
 
 - date: "Thursday, October 1, 2026 · 3:00 pm ET"
   presenter: "Michael Rabbat"
+  presenterURL: "https://scholar.google.com/citations?user=cMPKe9UAAAAJ"
   paper: "Towards World Models via Joint-Embedding Predictive Architectures"
   abstract: >-
     This talk provides an overview and motivation for why world models are a necessary component of future AI systems. The term “world model” is overloaded in the broader discourse. For the purposes of this talk I’ll argue that a world model should: (a) construct an agent’s internal representation of the world through perception, and (b) should be able to predict the evolution of this representation through time, including in response to the agent’s actions. Such a world model enables planning. Two main research questions are then: *how to learn such a world model from data?* and *how to use it for planning and control?* I’ll give an overview of our work on Joint-Embedding Predictive Architectures (JEPAs) and will discuss interesting directions for future work.
   bio: >-
     Michael Rabbat is Co-founder and VP World Models at Advanced Machine Intelligence (AMI Labs), where he is building a new breed of AI systems focused on understanding and reasoning about the world. He is also an Associate Industry Member at Mila. Previously, Michael was a Research Director at Meta, where he was a founding member of FAIR Montréal, contributing to the company’s fundamental AI research efforts. Prior to that, he spent over a decade as a professor at McGill University in Electrical and Computer Engineering. He earned his PhD from the University of Wisconsin, Madison. Throughout his career he has worked on a variety of topics across signal processing, learning, and optimization, including distributed optimization and federated learning. His current research is focused on methods for training world models and using them for planning and control.
   status: "Past"
+  links:
+    video: "https://drive.google.com/file/d/1rzpf1m7sYZG3cVGMVBr47BI8KfvyN-RG/view?usp=sharing"
+    videoAccess: "Mila login required"

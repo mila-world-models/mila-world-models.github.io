@@ -2,6 +2,7 @@
   <a href="{{ site.Home.RelPermalink }}" class="name">{{ site.Params.author | default site.Title }}</a>
   <nav class="site-nav">
     <a href="{{ site.Home.RelPermalink }}#schedule">Schedule</a>
+    {{ with partial "gallery-photos.html" . }}<a href="{{ "photos/" | relURL }}"{{ if and $.IsPage (eq $.RelPermalink ("photos/" | relURL)) }} class="active"{{ end }}>Photos</a>{{ end }}
     <a href="{{ site.Home.RelPermalink }}#organizers">Organizers</a>
     <a href="{{ partial "contact-url.html" . }}"{{ if and .IsPage (eq .RelPermalink ("contact/" | relURL)) }} class="active"{{ end }}>Contact</a>
   </nav>

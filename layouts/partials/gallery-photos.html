@@ -1,0 +1,7 @@
+{{- /* Images in assets/images/gallery/ that Hugo can resize. Anything else
+       (.gitkeep, HEIC files from phones, ...) is skipped. */ -}}
+{{- $photos := slice -}}
+{{- range resources.Match "images/gallery/*" -}}
+  {{- if reflect.IsImageResourceProcessable . }}{{ $photos = $photos | append . }}{{ end -}}
+{{- end -}}
+{{- return $photos -}}

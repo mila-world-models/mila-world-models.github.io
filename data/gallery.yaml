@@ -1,0 +1,17 @@
+# Photos from past sessions, shown in the "Photos" section of the homepage.
+#
+# Put image files in assets/images/gallery/ (any size, .jpg/.png/.webp; iPhone
+# .heic photos need converting to .jpg first, e.g. via Preview → Export). They
+# are resized automatically. Start each file name with the session date, then
+# number the photos in the order you want them shown:
+#   2026-10-01-rabbat-01.jpg, 2026-10-01-rabbat-02.jpg, ...
+# Sessions are shown newest first. The section is hidden until there is at
+# least one photo.
+
+# Optional label shown above each session's photos, keyed by date.
+sessions:
+  "2026-10-01": "Oct 1, 2026 · Michael Rabbat, Towards World Models via Joint-Embedding Predictive Architectures"
+
+# Optional caption under a single photo, keyed by file name.
+captions: {}
+#  2026-10-01-rabbat-08.jpg: "Q&A after the talk"

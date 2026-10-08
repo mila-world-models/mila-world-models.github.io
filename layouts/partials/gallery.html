@@ -1,0 +1,36 @@
+{{- /* Photos from assets/images/gallery/, grouped by session. Used by the
+       Photos page (content/photos.md sets `gallery: true`). */ -}}
+  {{ $photos := partial "gallery-photos.html" . }}
+  {{ with $photos }}
+  {{ $sessions := hugo.Data.gallery.sessions | default dict }}
+  {{ $captions := hugo.Data.gallery.captions | default dict }}
+  {{- /* Group by the date at the start of each file name: newest session
+         first, photos within a session in file-name order. */ -}}
+  {{ $dates := slice }}
+  {{ range . }}{{ $dates = $dates | append (substr (path.Base .Name) 0 10) }}{{ end }}
+  <div class="gallery-sessions">
+    {{ range sort (uniq $dates) "value" "desc" }}
+      {{ $date := . }}
+      {{ with index $sessions $date }}<p class="gallery__session">{{ . }}</p>{{ end }}
+      <ul class="gallery">
+        {{ range sort $photos "Name" }}
+          {{ $file := path.Base .Name }}
+          {{ if hasPrefix $file $date }}
+          {{ $caption := index $captions $file }}
+          {{ $thumb := .Fill "600x450 Smart webp" }}
+          {{ $full := .Fit "2000x2000" }}
+          <li class="gallery__item">
+            <a href="{{ $full.RelPermalink }}">
+              <img src="{{ $thumb.RelPermalink }}" width="300" height="225"
+                   alt="{{ $caption | default (index $sessions $date) | default "Photo from a past session" }}" loading="lazy">
+            </a>
+            {{ with $caption }}<p class="gallery__caption">{{ . }}</p>{{ end }}
+          </li>
+          {{ end }}
+        {{ end }}
+      </ul>
+    {{ end }}
+  </div>
+  {{ else }}
+  <p class="empty">No photos yet. Check back after the next session.</p>
+  {{ end }}

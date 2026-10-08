@@ -8,5 +8,9 @@
     {{ end }}
   </article>
 
+  {{ if .Params.gallery }}
+    {{ partial "gallery.html" . }}
+  {{ end }}
+
   <p class="back"><a href="{{ site.Home.RelPermalink }}">&larr; Back to the reading group</a></p>
 {{ end }}

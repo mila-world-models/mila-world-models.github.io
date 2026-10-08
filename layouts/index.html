@@ -54,7 +54,8 @@
             {{ if $hasDetails }}<details class="session__details">{{ end }}
               {{ if $hasDetails }}<summary class="session__summary">{{ else }}<div class="session__summary session__summary--static">{{ end }}
                 <span class="session__paper">{{ .paper | safeHTML }}</span>
-                {{ with .presenter }}<span class="session__presenter">{{ . | safeHTML }}</span>{{ end }}
+                {{ $url := .presenterURL }}
+                {{ with .presenter }}<span class="session__presenter">{{ with $url }}<a href="{{ . }}">{{ end }}{{ . | safeHTML }}{{ if $url }}</a>{{ end }}</span>{{ end }}
               {{ if $hasDetails }}</summary>{{ else }}</div>{{ end }}
               {{ if $hasDetails }}
               <div class="session__expanded">
@@ -71,6 +72,7 @@
                 <p class="session__links">
                   {{ with .links.paper }}<a href="{{ . }}">Paper</a>{{ end }}
                   {{ with .links.video }}<a href="{{ . }}">Recording</a>{{ end }}
+                  {{- with .links.videoAccess }}<span class="session__access">({{ . }})</span>{{ end }}
                   {{ with .links.slides }}<a href="{{ . }}">Slides</a>{{ end }}
                   {{ with .links.code }}<a href="{{ . }}">Code</a>{{ end }}
                 </p>

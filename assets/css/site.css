@@ -183,6 +183,7 @@ h2 {
 .session__note { margin: 0 0 0.1rem; color: var(--muted); font-size: 0.92rem; }
 .session__links { font-size: 0.9rem; margin: 0.35rem 0 0; }
 .session__links a { margin-right: 0.7rem; }
+.session__access { margin: 0 0.7rem 0 -0.4rem; color: var(--muted); font-size: 0.82rem; }
 
 @media (max-width: 620px) {
   .session { flex-direction: column; gap: 0.35rem; }
@@ -192,6 +193,34 @@ h2 {
 
 /* ----------  Empty state  ---------- */
 .empty { color: var(--muted); margin: 0; }
+
+/* ----------  Photos  ---------- */
+.gallery {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.gallery-sessions { margin-top: 1.5rem; }
+.gallery + .gallery__session { margin-top: 1.75rem; }
+.gallery__session { margin: 0 0 0.7rem; color: var(--muted); font-size: 0.9rem; }
+.gallery__item { margin: 0; }
+.gallery__item img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+  background: var(--thumb-bg);
+}
+.gallery__item a:hover img { filter: brightness(1.05); }
+.gallery__caption { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+@media (max-width: 620px) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.5rem; }
+}
 
 /* ----------  Organizers: photo on top, name, affiliation  ---------- */
 .organizers {
