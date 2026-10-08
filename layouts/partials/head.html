@@ -4,13 +4,13 @@
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}">
 
   <title>
-    {{- if .IsHome }}{{ site.Title }}
+    {{- if .IsHome }}{{ site.Title }} · Mila
     {{- else }}{{ .Title }} — {{ site.Title }}{{ end -}}
   </title>
 
   {{- /* Link previews (Slack, LinkedIn, X...). Image is static/images/og.png,
          1200x630. absURL needs the real baseURL, which the deploy passes in. */}}
-  {{ $title := cond .IsHome site.Title (printf "%s — %s" .Title site.Title) }}
+  {{ $title := cond .IsHome (printf "%s · Mila" site.Title) (printf "%s — %s" .Title site.Title) }}
   {{ $desc := .Description | default site.Params.description }}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.Title }}">
