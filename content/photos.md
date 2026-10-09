@@ -4,4 +4,4 @@ description: "Photos from past sessions of the World Models Reading Group at Mil
 gallery: true
 ---
 
-Photos from past sessions. Click a photo to see it larger.
+Photos from past sessions.
