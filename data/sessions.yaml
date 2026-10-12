@@ -28,7 +28,11 @@
 - date: "Thursday, October 15, 2026 · 3:00 pm ET"
   presenter: "Nicklas Hansen"
   presenterURL: "https://www.nicklashansen.com/"
-  paper: "Title TBD"
+  paper: "Hallucination in World Models is Predictable and Preventable"
+  abstract: >-
+    Generative world models now render strikingly realistic, action-controllable futures, yet they frequently hallucinate: rollouts remain visually fluent while drifting from the true dynamics. This raises two questions: can we tell when a world model is hallucinating, and what can we do about it? In this talk, I will address both, and argue that hallucination is, first and foremost, a data coverage problem. I will first introduce MMBench2, a 427-hour, 210-task dataset for visual world modeling with ground-truth actions, rewards, and live simulators, along with a 350M-parameter world model trained on this dataset. Using this testbed, I will show that hallucination is systematic, that each type of hallucination ties to specific model components, and that simple uncertainty metrics computed from the model’s own predictions reveal where it will fail at runtime. I will then show that the same metrics can be used for mitigation: coverage-aware sampling during training, and curiosity-driven data collection. I will conclude with open questions, including how these findings carry over to real-world data.
+  bio: >-
+    Nicklas Hansen is a postdoctoral researcher at NYU Courant working with Lerrel Pinto and Yann LeCun. Nick's research focuses on developing generalist AI agents that learn from interaction. They recently completed their PhD at UC San Diego advised by Xiaolong Wang and Hao Su, and have also spent time at NVIDIA Research, Meta AI (FAIR), and UC Berkeley.
   status: "Upcoming"
 
 - date: "Thursday, October 1, 2026 · 3:00 pm ET"
