@@ -12,6 +12,8 @@
   --bg: #fbfbfd;
   --rule: #e6e6e9;
   --thumb-bg: #f1f1f4;
+  --next-bg: #eef4fb;
+  --past-bg: #f4f4f6;
 }
 
 * { box-sizing: border-box; }
@@ -113,13 +115,41 @@ h2 {
 }
 .session:last-child { border-bottom: none; }
 
+.sessions__heading {
+  margin: 1.75rem 0 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.sessions__heading:first-of-type { margin-top: 0; }
+
+/* Shaded rows bleed into the gutter so their text stays aligned with the rest. */
+.session.is-next {
+  margin: 0 -0.9rem;
+  padding: 1.1rem 0.9rem;
+  background: var(--next-bg);
+  border-bottom-color: transparent;
+  border-radius: 8px;
+}
+.sessions--past {
+  margin: 0 -0.9rem;
+  padding: 0 0.9rem;
+  background: var(--past-bg);
+  border-radius: 8px;
+}
+.sessions--past .session { border-bottom-color: var(--rule); }
+.sessions--past .session__paper { color: #3a3a3e; }
+
 .session__date {
-  flex: 0 0 7rem;
+  flex: 0 0 9.5rem;
   color: var(--muted);
   font-size: 0.9rem;
   font-variant-numeric: tabular-nums;
   padding-top: 0.15rem;
 }
+.session__day, .session__time { display: block; white-space: nowrap; }
 .badge {
   display: inline-block;
   margin-top: 0.3rem;
@@ -134,6 +164,7 @@ h2 {
   text-transform: uppercase;
 }
 .badge--past { color: var(--muted); background: transparent; }
+.badge--next { color: #fff; background: var(--link); border-color: var(--link); }
 
 .session__body { flex: 1 1 auto; min-width: 0; }
 .session__summary {

@@ -1,0 +1,55 @@
+{{- /* One row of the schedule. Called with (dict "s" <session> "status" <badge text>). */ -}}
+{{ $status := .status }}
+{{ with .s }}
+<li class="session{{ with $status }} is-{{ . | urlize }}{{ end }}">
+  <div class="session__date">
+    {{- /* "Thursday, October 15, 2026 · 3:00 pm ET" is shown as two lines,
+           "Thu, Oct 15, 2026" and "3:00 pm ET". Dates in any other shape are
+           shown as written. */}}
+    {{ $parts := split .date " · " }}
+    {{ $day := index $parts 0 }}
+    {{ $d := split $day ", " }}
+    {{ if eq (len $d) 3 }}
+      {{ $md := split (index $d 1) " " }}
+      {{ if eq (len $md) 2 }}
+        {{ $day = printf "%s, %s %s, %s" (substr (index $d 0) 0 3) (substr (index $md 0) 0 3) (index $md 1) (index $d 2) }}
+      {{ end }}
+    {{ end }}
+    <span class="session__day">{{ $day }}</span>
+    {{ with after 1 $parts }}<span class="session__time">{{ delimit . " · " }}</span>{{ end }}
+    {{ with $status }}<span class="badge badge--{{ . | urlize }}">{{ . }}</span>{{ end }}
+  </div>
+  <div class="session__body">
+    {{ $hasDetails := or .abstract .bio .note .links }}
+    {{ if $hasDetails }}<details class="session__details">{{ end }}
+      {{ if $hasDetails }}<summary class="session__summary">{{ else }}<div class="session__summary session__summary--static">{{ end }}
+        <span class="session__paper">{{ .paper | safeHTML }}</span>
+        {{ $url := .presenterURL }}
+        {{ with .presenter }}<span class="session__presenter">{{ with $url }}<a href="{{ . }}">{{ end }}{{ . | safeHTML }}{{ if $url }}</a>{{ end }}</span>{{ end }}
+      {{ if $hasDetails }}</summary>{{ else }}</div>{{ end }}
+      {{ if $hasDetails }}
+      <div class="session__expanded">
+        {{ with .note }}<p class="session__note">{{ . | safeHTML }}</p>{{ end }}
+        {{ with .abstract }}
+        <h3>Abstract</h3>
+        <div class="session__copy">{{ . | markdownify }}</div>
+        {{ end }}
+        {{ with .bio }}
+        <h3>Bio</h3>
+        <div class="session__copy">{{ . | markdownify }}</div>
+        {{ end }}
+        {{ if .links }}
+        <p class="session__links">
+          {{ with .links.paper }}<a href="{{ . }}">Paper</a>{{ end }}
+          {{ with .links.video }}<a href="{{ . }}">Recording</a>{{ end }}
+          {{- with .links.videoAccess }}<span class="session__access">({{ . }})</span>{{ end }}
+          {{ with .links.slides }}<a href="{{ . }}">Slides</a>{{ end }}
+          {{ with .links.code }}<a href="{{ . }}">Code</a>{{ end }}
+        </p>
+        {{ end }}
+      </div>
+    </details>
+    {{ end }}
+  </div>
+</li>
+{{ end }}

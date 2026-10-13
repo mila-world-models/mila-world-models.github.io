@@ -12,6 +12,10 @@
 #   bio: "Optional presenter biography."
 #   status: "Upcoming"      # badge next to the date: "Upcoming", "Past", "Today"...
 #                           # (the older `upcoming: true` still means "Upcoming")
+#                           # "Past" talks go in a separate Past list; the rest are
+#                           # shown soonest first, and the soonest "Upcoming" one
+#                           # is highlighted as "Next". Mark a talk "Past" once it
+#                           # has happened and the highlight moves on.
 #   links:
 #     paper: "https://arxiv.org/abs/..."
 #     video: "https://youtu.be/..."     # optional recording
@@ -21,11 +25,13 @@
 
 - date: "Thursday, November 26, 2026 · 3:00 pm ET"
   presenter: "Sherry Yang"
+  presenterURL: "https://sherryy.github.io/"
   paper: "Title TBD"
   status: "Upcoming"
 
 - date: "Thursday, November 12, 2026 · 3:00 pm ET"
   presenter: "Artem Zholus"
+  presenterURL: "https://artemzholus.github.io/"
   paper: "Title TBD"
   status: "Upcoming"
 

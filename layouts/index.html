@@ -38,51 +38,39 @@
     {{ end }}
   </section>
 
+  {{- /* Split the schedule into upcoming and past. Anything not marked "Past"
+         counts as upcoming. The data file is newest first, so the upcoming list
+         is reversed to read soonest first, and its first "Upcoming" talk gets
+         the "Next" badge. */}}
+  {{ $upcoming := slice }}
+  {{ $past := slice }}
+  {{ range $i, $s := hugo.Data.sessions }}
+    {{ $status := $s.status | default (cond (eq $s.upcoming true) "Upcoming" "") }}
+    {{ $e := dict "i" $i "s" $s "status" $status }}
+    {{ if eq $status "Past" }}{{ $past = $past | append $e }}{{ else }}{{ $upcoming = $upcoming | append $e }}{{ end }}
+  {{ end }}
+  {{ $upcoming = sort $upcoming "i" "desc" }}
+
   <section id="schedule">
     <h2>{{ site.Params.sessionsHeading | default "Schedule" }}</h2>
-    {{ with hugo.Data.sessions }}
+    {{ with $upcoming }}
+    <h3 class="sessions__heading">Upcoming</h3>
     <ul class="sessions">
+      {{ $marked := false }}
       {{ range . }}
-        {{ $status := .status | default (cond (eq .upcoming true) "Upcoming" "") }}
-        <li class="session{{ with $status }} is-{{ . | urlize }}{{ end }}">
-          <div class="session__date">
-            {{ .date }}
-            {{ with $status }}<span class="badge badge--{{ . | urlize }}">{{ . }}</span>{{ end }}
-          </div>
-          <div class="session__body">
-            {{ $hasDetails := or .abstract .bio .note .links }}
-            {{ if $hasDetails }}<details class="session__details">{{ end }}
-              {{ if $hasDetails }}<summary class="session__summary">{{ else }}<div class="session__summary session__summary--static">{{ end }}
-                <span class="session__paper">{{ .paper | safeHTML }}</span>
-                {{ $url := .presenterURL }}
-                {{ with .presenter }}<span class="session__presenter">{{ with $url }}<a href="{{ . }}">{{ end }}{{ . | safeHTML }}{{ if $url }}</a>{{ end }}</span>{{ end }}
-              {{ if $hasDetails }}</summary>{{ else }}</div>{{ end }}
-              {{ if $hasDetails }}
-              <div class="session__expanded">
-                {{ with .note }}<p class="session__note">{{ . | safeHTML }}</p>{{ end }}
-                {{ with .abstract }}
-                <h3>Abstract</h3>
-                <div class="session__copy">{{ . | markdownify }}</div>
-                {{ end }}
-                {{ with .bio }}
-                <h3>Bio</h3>
-                <div class="session__copy">{{ . | markdownify }}</div>
-                {{ end }}
-                {{ if .links }}
-                <p class="session__links">
-                  {{ with .links.paper }}<a href="{{ . }}">Paper</a>{{ end }}
-                  {{ with .links.video }}<a href="{{ . }}">Recording</a>{{ end }}
-                  {{- with .links.videoAccess }}<span class="session__access">({{ . }})</span>{{ end }}
-                  {{ with .links.slides }}<a href="{{ . }}">Slides</a>{{ end }}
-                  {{ with .links.code }}<a href="{{ . }}">Code</a>{{ end }}
-                </p>
-                {{ end }}
-              </div>
-            </details>
-            {{ end }}
-          </div>
-        </li>
+        {{ $status := .status }}
+        {{- /* The heading already says "Upcoming", so only the next talk gets a badge. */}}
+        {{ if eq $status "Upcoming" }}
+          {{ if $marked }}{{ $status = "" }}{{ else }}{{ $status = "Next" }}{{ $marked = true }}{{ end }}
+        {{ end }}
+        {{ partial "session.html" (dict "s" .s "status" $status) }}
       {{ end }}
+    </ul>
+    {{ end }}
+    {{ with $past }}
+    <h3 class="sessions__heading">Past</h3>
+    <ul class="sessions sessions--past">
+      {{ range . }}{{ partial "session.html" (dict "s" .s "status" "") }}{{ end }}
     </ul>
     {{ end }}
   </section>
