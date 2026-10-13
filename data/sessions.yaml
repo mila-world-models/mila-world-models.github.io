@@ -19,6 +19,16 @@
 #     slides: "https://..."             # optional
 #     code: "https://github.com/..."    # optional
 
+- date: "Thursday, November 26, 2026 · 3:00 pm ET"
+  presenter: "Sherry Yang"
+  paper: "Title TBD"
+  status: "Upcoming"
+
+- date: "Thursday, November 12, 2026 · 3:00 pm ET"
+  presenter: "Artem Zholus"
+  paper: "Title TBD"
+  status: "Upcoming"
+
 - date: "Thursday, October 29, 2026 · 3:00 pm ET"
   presenter: "David Klindt"
   presenterURL: "https://facultyprofiles.cshl.edu/david.klindt"
