@@ -10,6 +10,7 @@
 
 # Optional label shown above each session's photos, keyed by date.
 sessions:
+  "2026-10-15": "Oct 15, 2026 · Nicklas Hansen, Hallucination in World Models is Predictable and Preventable"
   "2026-10-01": "Oct 1, 2026 · Michael Rabbat, Towards World Models via Joint-Embedding Predictive Architectures"
 
 # Optional caption under a single photo, keyed by file name.
