@@ -24,9 +24,13 @@
 #     code: "https://github.com/..."    # optional
 
 - date: "Thursday, November 26, 2026 · 3:00 pm ET"
-  presenter: "Sherry Yang"
-  presenterURL: "https://sherryy.github.io/"
-  paper: "Title TBD"
+  presenter: "Mattia Scardecchia"
+  presenterURL: "https://mattia-scardecchia.github.io/"
+  paper: "Enabling learning from experience to act in the physical world"
+  abstract: >-
+    Reinforcement learning has led to superhuman performance in games, math and coding, enabled by cheap, safe and parallel interaction, and by verifiable rewards. Interaction with the physical world, by contrast, is costly, unsafe and slow. To bring the same success to robotics, we need interactive digital replicas of the physical world. We showcase the potential of this strategy by discussing our recent work on robotic table tennis: learning entirely in a neural-augmented physics simulator, an autonomous robot beat professional human players under official rules. Scaling this recipe to general robotic policies requires vision-language models serving as a reward function, and video world models as interactive environments for agents. However, current world models struggle out of distribution and over long horizons, and are costly to train and run. Through a controlled study, we show how shaping their latent space with temporal predictive objectives can simplify dynamics modeling without sacrificing information retention, yielding world models that are more accurate, faster to train and run, and better at evaluating policies. Overall, these results point to learned simulators as a promising path toward capable physical agents, and highlight temporal structure as an important design criterion for them.
+  bio: >-
+    Mattia Scardecchia is a second-year PhD student at NYU Courant, advised by Prof. Sherry Yang. His research focuses on enabling agents to learn to act in the physical world from experience, through reinforcement learning and world models. He also studies local learning through the lens of statistical mechanics, as a route to energy-efficient ML and to computational models of learning in biological brains. He received his BSc and MSc from Bocconi University, where he was advised by Prof. Riccardo Zecchina, and previously worked at Sony AI on Project Ace and at Bending Spoons on Remini.
   status: "Upcoming"
 
 - date: "Thursday, November 12, 2026 · 3:00 pm ET"
